@@ -71,7 +71,7 @@ def grafi_letnih_povprecij(letno_povprecje):
     axs[3].bar(letno_povprecje['leto'],
                letno_povprecje['radijacija'], color='yellow')
     axs[3].set_xlabel('Leto')
-    axs[3].set_ylabel('Sončno sevanje (Megajoules)')
+    axs[3].set_ylabel('Sončno sevanje (MJ)')
     axs[3].set_title('Letno sončno sevanje')
 
     plt.xticks(rotation=50)
@@ -97,6 +97,29 @@ def heatmap_temperatura(df):
     plt.xlabel("Dan v letu")
     plt.ylabel("Leto")
     plt.title("Vzorci dnevnih temperatur zadnjih 30 let")
+
+    # prikazi graf
+    plt.show()
+
+
+def heatmap_radijacija(df):
+
+    df['datum'] = pd.to_datetime(df['datum'])
+
+    df['leto'] = df['datum'].dt.year
+    df['dan'] = df['datum'].dt.dayofyear
+
+    heatmap_data = df.pivot(
+        index='leto', columns='dan', values='radijacija')
+
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(heatmap_data, cmap="YlGnBu", cbar_kws={
+                'label': 'radijacija (MJ)'}, linewidths=0.6)
+
+    # Uredi graf
+    plt.xlabel("Dan v letu")
+    plt.ylabel("Leto")
+    plt.title("Vzorci dnevnega sončnega sevanja zadnjih 30 let")
 
     # prikazi graf
     plt.show()
