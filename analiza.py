@@ -16,3 +16,33 @@ def groupiranje_leta_meseci(df):
     }).reset_index()
 
     return mesecno_povprecje
+
+
+def grafi_mesecnih_povprecij(mesecno_povprecje):
+
+    _, axs = plt.subplots(4, 1, figsize=(10, 10), sharex=False)
+
+    axs[0].bar(mesecno_povprecje['mesec'],
+               mesecno_povprecje['temperatura'], color='red')
+    axs[0].set_ylabel('Temperatura (°C)')
+    axs[0].set_title('Povprečne mesečne temperature')
+
+    axs[1].bar(mesecno_povprecje['mesec'],
+               mesecno_povprecje['dež_sum'], color='blue')
+    axs[1].set_ylabel('Seštevek padavin (mm)')
+    axs[1].set_title('Seštevek mesečnih padavin')
+
+    axs[2].bar(mesecno_povprecje['mesec'],
+               mesecno_povprecje['dež_ure'], color='green')
+    axs[2].set_ylabel('Padavine v urah')
+    axs[2].set_title('Čas mesečnih padavin')
+
+    axs[3].bar(mesecno_povprecje['mesec'],
+               mesecno_povprecje['radijacija'], color='yellow')
+    axs[3].set_xlabel('Mesec')
+    axs[3].set_ylabel('Sončno sevanje (Megajoules)')
+    axs[3].set_title('Mesečno sončno sevanje')
+
+    plt.xticks(rotation=50)
+    plt.subplots_adjust(hspace=0.5)
+    plt.show()
