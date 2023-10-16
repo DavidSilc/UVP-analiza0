@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def groupiranje_leta_meseci(df):
@@ -75,4 +76,27 @@ def grafi_letnih_povprecij(letno_povprecje):
 
     plt.xticks(rotation=50)
     plt.subplots_adjust(hspace=0.5)
+    plt.show()
+
+
+def heatmap_temperatura(df):
+
+    df['datum'] = pd.to_datetime(df['datum'])
+
+    df['leto'] = df['datum'].dt.year
+    df['dan'] = df['datum'].dt.dayofyear
+
+    heatmap_data = df.pivot(
+        index='leto', columns='dan', values='temperatura')
+
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(heatmap_data, cmap="YlGnBu", cbar_kws={
+                'label': 'temperatura (°C)'}, linewidths=0.6)
+
+    # Uredi graf
+    plt.xlabel("Dan v letu")
+    plt.ylabel("Leto")
+    plt.title("Vzorci dnevnih temperatur zadnjih 30 let")
+
+    # prikazi graf
     plt.show()
