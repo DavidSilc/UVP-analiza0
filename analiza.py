@@ -125,10 +125,6 @@ def heatmap_radijacija(df):
     plt.show()
 
 
-data2 = pd.read_csv("izhod.csv", sep=',')
-df = groupiranje_leta_meseci(data2)
-
-
 def graf_mediana_max_min(df, vrsta):
     annual_stats = df.groupby('leto').agg({
         'temperatura': [vrsta],
@@ -175,6 +171,3 @@ def graf_mediana_max_min(df, vrsta):
 
     plt.tight_layout()
     plt.show()
-
-
-graf_mediana_max_min(df, 'max')
