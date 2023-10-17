@@ -6,13 +6,13 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
 
-def groupiranje_leta_meseci(df):
+def groupiranje_meseci(df):
     df['datum'] = pd.to_datetime(df['datum'])
 
     df['mesec'] = df['datum'].dt.month
     df['leto'] = df['datum'].dt.year
 
-    mesecno_povprecje = df.groupby(['leto', 'mesec']).agg({
+    mesecno_povprecje = df.groupby('mesec').agg({
         'temperatura': 'mean',
         'dež_sum': 'mean',
         'dež_ure': 'mean',
@@ -20,6 +20,37 @@ def groupiranje_leta_meseci(df):
     }).reset_index()
 
     return mesecno_povprecje
+
+
+def groupiranje_meseci_leto(df):
+    df['datum'] = pd.to_datetime(df['datum'])
+
+    df['mesec'] = df['datum'].dt.month
+    df['leto'] = df['datum'].dt.year
+
+    mesecno_povprecje = df.groupby(['mesec', 'leto']).agg({
+        'temperatura': 'mean',
+        'dež_sum': 'mean',
+        'dež_ure': 'mean',
+        'radijacija': 'mean'
+    }).reset_index()
+
+    return mesecno_povprecje
+
+
+def groupiranje_leto(df):
+    df['datum'] = pd.to_datetime(df['datum'])
+
+    df['leto'] = df['datum'].dt.year
+
+    letno_povprecje = df.groupby('leto').agg({
+        'temperatura': 'mean',
+        'dež_sum': 'mean',
+        'dež_ure': 'mean',
+        'radijacija': 'mean'
+    }).reset_index()
+
+    return letno_povprecje
 
 
 def grafi_mesecnih_povprecij(mesecno_povprecje):
@@ -33,8 +64,8 @@ def grafi_mesecnih_povprecij(mesecno_povprecje):
 
     axs[1].bar(mesecno_povprecje['mesec'],
                mesecno_povprecje['dež_sum'], color='blue')
-    axs[1].set_ylabel('Seštevek padavin (mm)')
-    axs[1].set_title('Seštevek mesečnih padavin')
+    axs[1].set_ylabel('Povprečen seštevek padavin (mm)')
+    axs[1].set_title('Povprečen seštevek mesečnih padavin')
 
     axs[2].bar(mesecno_povprecje['mesec'],
                mesecno_povprecje['dež_ure'], color='green')
@@ -53,8 +84,7 @@ def grafi_mesecnih_povprecij(mesecno_povprecje):
 
 
 def grafi_letnih_povprecij(letno_povprecje):
-
-    _, axs = plt.subplots(4, 1, figsize=(10, 10), sharex=False)
+    _, axs = plt.subplots(4, 1, figsize=(12, 12), sharex=False)
 
     axs[0].bar(letno_povprecje['leto'],
                letno_povprecje['temperatura'], color='red')
