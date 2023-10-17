@@ -220,3 +220,30 @@ def korelacijska_matrika(mesecna_df):
     # Prikaz korelacijske matrike
     plt.title('Korelacijska matrika')
     plt.show()
+
+
+def linearna_regresija(df, rad):
+
+    X = df[['radijacija']]
+    y = df['temperatura']
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2)
+
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    if rad != None and rad >= 0:
+        temp = model.predict([[rad]])
+        print("Predvidena temperatura v °C pri %d MJ sončnega sevanja je %d" %
+              (rad, temp[0]))
+
+    plt.scatter(X_test, y_test, color='blue', label='Dejanski')
+    plt.plot(X_test, y_pred, color='red', linewidth=2, label='Predvideno')
+    plt.xlabel('Radijacija (MJ)')
+    plt.ylabel('Temperatura (°C)')
+    plt.legend()
+    plt.title('Linearna Regresija: Temperatura - Radijacija')
+    plt.show()
