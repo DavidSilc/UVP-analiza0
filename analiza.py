@@ -1,6 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 
 
 def groupiranje_leta_meseci(df):
@@ -170,4 +173,20 @@ def graf_mediana_max_min(df, vrsta):
     plt.ylabel(slovar[vrsta] + ' sončne radijacije (Megajoules)')
 
     plt.tight_layout()
+    plt.show()
+
+
+def korelacijska_matrika(mesecna_df):
+    # Znebimo se stolpcev za katere nas korelacija z ostalimi ne zanima
+    mesecna_df = mesecna_df.drop(["leto", "mesec"], axis=1)
+
+    # Izracun korelacijske matrike
+    matrika = mesecna_df.corr()
+
+    # Heatmap za prikaz korelacijske matrike
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(matrika, annot=True, cmap='coolwarm', linewidths=0.3)
+
+    # Prikaz korelacijske matrike
+    plt.title('Korelacijska matrika')
     plt.show()
