@@ -2,7 +2,7 @@
 
 Avtor: David Planinšek Šilc
 
-Za projektno nalogo pri predmetu Uvod v programiranje, sem pripravil analizo vremenskih razmer. Podatki sem dobil iz arhiva vremenskih razmer, kjer so zbrani podatki o vremenu od leta 1940 do danes. V projektni nalogi pridobim podatke iz **API**, jih **obdelam**, **shranim** tiste, ki jih potrebujem za analizo, ter na koncu predstavim analizo z **Jupyter Notebook**.
+Za projektno nalogo pri predmetu Uvod v programiranje sem pripravil analizo vremenskih razmer. Podatke sem dobil iz arhiva vremenskih razmer, kjer so zbrani podatki o vremenu od leta 1940 do danes. V projektni nalogi pridobim podatke iz **API**, jih **obdelam**, **shranim** tiste, ki jih potrebujem za analizo, ter na koncu predstavim analizo z **Jupyter Notebook**.
 
 API in njegovo dokumentacijo sem našel na [Uradni Open-Meteo strani](https://open-meteo.com/ "open-meteo").
 
