@@ -236,7 +236,7 @@ def linearna_regresija(df, rad):
 
     if rad != None and rad >= 0:
         temp = model.predict([[rad]])
-        print("Predvidena temperatura v °C pri %d MJ sončnega sevanja je %d" %
+        print("Pri %d MJ sončnega sevanja je temperatura %d °C" %
               (rad, temp[0]))
 
     plt.scatter(X_test, y_test, color='blue', label='Dejanski')
