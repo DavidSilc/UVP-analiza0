@@ -10,7 +10,7 @@ Odločil sem se za obdelavo podatkov o največji dnevni temperaturi 2 metra nad 
 
 ## Navodila za uporabo
 
-V datoteki _podatki.py_ se nahajata funkcije, ki pridobita podatke iz API, jih ustrezno uredita, prevedeta in shranita v .csv datoteko.
+V datoteki _podatki.py_ se nahajata funkcije, ki pridobita podatke iz API, jih ustrezno uredita, prevedeta in shranita v *.csv* datoteko.
 Na začetku analize v Jupyter Notebooku, se nahajajo časovni intervali ter zemljepisna širina in dolžina, ki sem jih izbral jaz za potrebe prikaza podatkov. Uporabnik si lahko poljubno izbira časovne intervale in lokacijo, in s tem spreminja rezultate analize. Jaz sem izbral podatke za Slovenijo, ki ima se nahaja na kordinatih ___46.0833___ in ___15.0___ v časovnem obdobju od ___1.1.1990___ do ___1.1.2020___.
 
 V datoteki _analiza.py_ se nahajajo funkcije, ki analizirajo izbrane podatke, in jih primerno prikažejo na različnih grafih.
