@@ -16,6 +16,6 @@ Na začetku analize v Jupyter Notebooku, se nahajajo časovni intervali ter zeml
 V datoteki _analiza.py_ se nahajajo funkcije, ki analizirajo izbrane podatke, in jih primerno prikažejo na različnih grafih.
 
 Uporabnik prenese vse datoteke .py in glavno datoteko _rezultati.ipynb_, mora še namestiti vse knjižnice, ki so bile uporabljene za analizo. To so:
-`pandas`, `matplotlib`, `seaborne`, `requests` in `sklearn`
+`pandas`, `matplotlib`, `seaborn`, `requests` in `sklearn`
 
 Ko ima uporabnik naloženo vse potrebno lahko zažene _rezultati.ipynb_.
